@@ -1,0 +1,304 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "FixCry Issue Schema",
+  "description": "Schema for validating FixCry issue data",
+  "type": "object",
+  "required": [
+    "id",
+    "title",
+    "category",
+    "location",
+    "description",
+    "submitted_at",
+    "status",
+    "stage"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^FC-\\d{4}-\\d{2}-\\d{2}-\\d{4}$",
+      "description": "Unique issue identifier in format FC-YYYY-MM-DD-NNNN"
+    },
+    "title": {
+      "type": "string",
+      "minLength": 5,
+      "maxLength": 200,
+      "description": "Brief title describing the issue"
+    },
+    "category": {
+      "type": "string",
+      "enum": [
+        "תחבורה",
+        "בריאות",
+        "חינוך",
+        "רווחה",
+        "סביבה",
+        "ביטחון",
+        "דיור",
+        "ממשל"
+      ],
+      "description": "Primary category of the issue"
+    },
+    "subcategory": {
+      "type": "string",
+      "maxLength": 100,
+      "description": "Optional subcategory for more specific classification"
+    },
+    "location": {
+      "type": "object",
+      "required": ["city"],
+      "properties": {
+        "city": {
+          "type": "string",
+          "minLength": 2,
+          "maxLength": 50,
+          "description": "City where the issue occurred"
+        },
+        "street": {
+          "type": "string",
+          "maxLength": 100,
+          "description": "Street address (optional)"
+        },
+        "neighborhood": {
+          "type": "string",
+          "maxLength": 50,
+          "description": "Neighborhood or district (optional)"
+        },
+        "geo": {
+          "type": "array",
+          "items": {
+            "type": "number"
+          },
+          "minItems": 2,
+          "maxItems": 2,
+          "description": "GPS coordinates [latitude, longitude]"
+        },
+        "landmarks": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Nearby landmarks for reference"
+        }
+      }
+    },
+    "description": {
+      "type": "string",
+      "minLength": 20,
+      "maxLength": 2000,
+      "description": "Detailed description of the issue"
+    },
+    "evidence": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^media/proofs/.*\\.(jpg|jpeg|png|gif|mp4|mov|pdf|doc|docx)$"
+      },
+      "description": "Array of file paths to evidence (photos, videos, documents)"
+    },
+    "reporter": {
+      "type": "object",
+      "required": ["mode"],
+      "properties": {
+        "mode": {
+          "type": "string",
+          "enum": ["anonymous", "identified"],
+          "description": "Reporting mode - anonymous or identified"
+        },
+        "contact": {
+          "type": "object",
+          "properties": {
+            "email": {
+              "type": "string",
+              "format": "email",
+              "description": "Contact email (if not anonymous)"
+            },
+            "phone": {
+              "type": "string",
+              "pattern": "^[0-9\\-\\+\\(\\)\\s]+$",
+              "description": "Contact phone (optional)"
+            },
+            "name": {
+              "type": "string",
+              "maxLength": 100,
+              "description": "Reporter name (if not anonymous)"
+            }
+          }
+        }
+      }
+    },
+    "submitted_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "ISO 8601 timestamp when issue was submitted"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "open",
+        "triage",
+        "assigned",
+        "in_progress",
+        "waiting_on_authority",
+        "resolved",
+        "verified",
+        "closed"
+      ],
+      "description": "Current status of the issue"
+    },
+    "stage": {
+      "type": "string",
+      "enum": [
+        "new",
+        "triage",
+        "investigation",
+        "resolution",
+        "verification",
+        "closed"
+      ],
+      "description": "Current stage in the resolution process"
+    },
+    "assignee": {
+      "type": "string",
+      "pattern": "^(municipality|ministry|company|other):[a-zA-Z0-9\\-_]+$",
+      "description": "Assigned authority in format type:name"
+    },
+    "priority": {
+      "type": "string",
+      "enum": ["low", "normal", "high", "urgent"],
+      "default": "normal",
+      "description": "Priority level of the issue"
+    },
+    "sla": {
+      "type": "object",
+      "properties": {
+        "first_response_h": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 168,
+          "description": "SLA for first response in hours"
+        },
+        "target_fix_days": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 365,
+          "description": "Target days for resolution"
+        },
+        "escalation_days": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 30,
+          "description": "Days before escalation"
+        }
+      }
+    },
+    "labels": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "maxLength": 50
+      },
+      "description": "Array of labels for categorization and filtering"
+    },
+    "duplicates": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^FC-\\d{4}-\\d{2}-\\d{2}-\\d{4}$"
+      },
+      "description": "Array of duplicate issue IDs"
+    },
+    "related": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^FC-\\d{4}-\\d{2}-\\d{2}-\\d{4}$"
+      },
+      "description": "Array of related issue IDs"
+    },
+    "history": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["at", "action", "by"],
+        "properties": {
+          "at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "action": {
+            "type": "string",
+            "enum": [
+              "created",
+              "triage-assigned",
+              "investigation-started",
+              "authority-contacted",
+              "resolution-proposed",
+              "resolution-implemented",
+              "verification-started",
+              "verified",
+              "closed",
+              "reopened"
+            ]
+          },
+          "by": {
+            "type": "string",
+            "maxLength": 100
+          },
+          "comment": {
+            "type": "string",
+            "maxLength": 1000
+          }
+        }
+      }
+    },
+    "resolution": {
+      "type": "object",
+      "properties": {
+        "description": {
+          "type": "string",
+          "maxLength": 1000,
+          "description": "Description of the resolution"
+        },
+        "implemented_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "verified_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "verified_by": {
+          "type": "string",
+          "maxLength": 100
+        },
+        "cost": {
+          "type": "number",
+          "minimum": 0,
+          "description": "Cost of resolution (if applicable)"
+        }
+      }
+    },
+    "metadata": {
+      "type": "object",
+      "properties": {
+        "source": {
+          "type": "string",
+          "enum": ["web", "mobile", "api", "import"],
+          "default": "web"
+        },
+        "version": {
+          "type": "string",
+          "pattern": "^\\d+\\.\\d+\\.\\d+$"
+        },
+        "tags": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  },
+  "additionalProperties": false
+}

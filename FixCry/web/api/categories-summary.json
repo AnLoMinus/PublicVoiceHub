@@ -1,0 +1,244 @@
+{
+  "categories": {
+    "תחבורה": {
+      "name": "תחבורה",
+      "icon": "fas fa-car",
+      "color": "#0d6efd",
+      "description": "בעיות בכבישים, תחבורה ציבורית ותשתיות",
+      "subcategories": [
+        "כבישים ותשתיות",
+        "תחבורה ציבורית",
+        "חנייה",
+        "תאונות דרכים",
+        "רמזורים ותמרורים"
+      ],
+      "authorities": [
+        "משרד התחבורה",
+        "רשויות מקומיות",
+        "חברות תחבורה ציבורית"
+      ],
+      "sla": {
+        "first_response_hours": 24,
+        "target_resolution_days": 7
+      }
+    },
+    "בריאות": {
+      "name": "בריאות",
+      "icon": "fas fa-hospital",
+      "color": "#198754",
+      "description": "בעיות במערכת הרפואה הציבורית",
+      "subcategories": [
+        "בתי חולים",
+        "קופות חולים",
+        "מרפאות",
+        "שירותי חירום",
+        "תרופות וציוד"
+      ],
+      "authorities": [
+        "משרד הבריאות",
+        "קופות חולים",
+        "בתי חולים"
+      ],
+      "sla": {
+        "first_response_hours": 12,
+        "target_resolution_days": 3
+      }
+    },
+    "חינוך": {
+      "name": "חינוך",
+      "icon": "fas fa-graduation-cap",
+      "color": "#0dcaf0",
+      "description": "בעיות בבתי ספר ומוסדות לימוד",
+      "subcategories": [
+        "בתי ספר",
+        "גני ילדים",
+        "השכלה גבוהה",
+        "חינוך מיוחד",
+        "תשתיות חינוך"
+      ],
+      "authorities": [
+        "משרד החינוך",
+        "רשויות מקומיות",
+        "מוסדות חינוך"
+      ],
+      "sla": {
+        "first_response_hours": 48,
+        "target_resolution_days": 14
+      }
+    },
+    "רווחה": {
+      "name": "רווחה",
+      "icon": "fas fa-heart",
+      "color": "#dc3545",
+      "description": "מצוקות חברתיות ושירותי רווחה",
+      "subcategories": [
+        "שירותי רווחה",
+        "קצבאות",
+        "סיוע לנזקקים",
+        "שירותים חברתיים",
+        "דיור ציבורי"
+      ],
+      "authorities": [
+        "משרד הרווחה",
+        "רשויות מקומיות",
+        "ביטוח לאומי"
+      ],
+      "sla": {
+        "first_response_hours": 24,
+        "target_resolution_days": 7
+      }
+    },
+    "סביבה": {
+      "name": "סביבה",
+      "icon": "fas fa-leaf",
+      "color": "#198754",
+      "description": "מפגעים סביבתיים וזיהום",
+      "subcategories": [
+        "זיהום אוויר",
+        "זיהום מים",
+        "רעש",
+        "פסולת",
+        "פגיעה בטבע"
+      ],
+      "authorities": [
+        "משרד להגנת הסביבה",
+        "רשויות מקומיות",
+        "רשות הטבע והגנים"
+      ],
+      "sla": {
+        "first_response_hours": 24,
+        "target_resolution_days": 14
+      }
+    },
+    "ביטחון": {
+      "name": "ביטחון",
+      "icon": "fas fa-shield-alt",
+      "color": "#ffc107",
+      "description": "נושאי ביטחון אישי וציבורי",
+      "subcategories": [
+        "ביטחון אישי",
+        "ביטחון ציבורי",
+        "שירותי חירום",
+        "אכיפת חוק",
+        "מצבי חירום"
+      ],
+      "authorities": [
+        "משטרת ישראל",
+        "משמר הגבול",
+        "שירותי חירום"
+      ],
+      "sla": {
+        "first_response_hours": 2,
+        "target_resolution_days": 1
+      }
+    },
+    "דיור": {
+      "name": "דיור",
+      "icon": "fas fa-home",
+      "color": "#6c757d",
+      "description": "בעיות בדיור ציבורי ושכירויות",
+      "subcategories": [
+        "דיור ציבורי",
+        "שכירויות",
+        "קבלנים",
+        "תשתיות דיור",
+        "זכויות דיירים"
+      ],
+      "authorities": [
+        "משרד הבינוי והשיכון",
+        "רשויות מקומיות",
+        "חברות דיור"
+      ],
+      "sla": {
+        "first_response_hours": 48,
+        "target_resolution_days": 21
+      }
+    },
+    "ממשל": {
+      "name": "ממשל",
+      "icon": "fas fa-landmark",
+      "color": "#212529",
+      "description": "התנהלות רשויות ושירותים ציבוריים",
+      "subcategories": [
+        "רשויות מקומיות",
+        "משרדי ממשלה",
+        "שירותים ציבוריים",
+        "בירוקרטיה",
+        "שקיפות"
+      ],
+      "authorities": [
+        "משרדי ממשלה",
+        "רשויות מקומיות",
+        "גופים ציבוריים"
+      ],
+      "sla": {
+        "first_response_hours": 48,
+        "target_resolution_days": 30
+      }
+    }
+  },
+  "statuses": {
+    "open": {
+      "name": "פתוח",
+      "color": "#ffc107",
+      "description": "התיק נפתח וממתין לטיפול"
+    },
+    "triage": {
+      "name": "בסיווג",
+      "color": "#0dcaf0",
+      "description": "התיק נבדק ומסווג"
+    },
+    "assigned": {
+      "name": "הוקצה",
+      "color": "#6f42c1",
+      "description": "התיק הוקצה לגורם מטפל"
+    },
+    "in_progress": {
+      "name": "בטיפול",
+      "color": "#fd7e14",
+      "description": "התיק בטיפול פעיל"
+    },
+    "waiting_on_authority": {
+      "name": "ממתין לרשות",
+      "color": "#20c997",
+      "description": "ממתין לתגובה מהרשות"
+    },
+    "resolved": {
+      "name": "נפתר",
+      "color": "#198754",
+      "description": "הבעיה נפתרה"
+    },
+    "verified": {
+      "name": "אומת",
+      "color": "#198754",
+      "description": "הפתרון אומת"
+    },
+    "closed": {
+      "name": "סגור",
+      "color": "#6c757d",
+      "description": "התיק נסגר"
+    }
+  },
+  "priorities": {
+    "low": {
+      "name": "נמוך",
+      "color": "#6c757d",
+      "description": "בעיה לא דחופה"
+    },
+    "normal": {
+      "name": "רגיל",
+      "color": "#0d6efd",
+      "description": "בעיה רגילה"
+    },
+    "high": {
+      "name": "גבוה",
+      "color": "#ffc107",
+      "description": "בעיה חשובה"
+    },
+    "urgent": {
+      "name": "דחוף",
+      "color": "#dc3545",
+      "description": "בעיה דחופה"
+    }
+  }
+}

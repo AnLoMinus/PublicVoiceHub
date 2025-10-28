@@ -1,0 +1,26 @@
+{
+  "total_issues": 0,
+  "open_issues": 0,
+  "resolved_issues": 0,
+  "categories": {
+    "תחבורה": 0,
+    "בריאות": 0,
+    "חינוך": 0,
+    "רווחה": 0,
+    "סביבה": 0,
+    "ביטחון": 0,
+    "דיור": 0,
+    "ממשל": 0
+  },
+  "locations": {},
+  "last_updated": "2025-10-28T00:00:00Z",
+  "trends": {
+    "daily": [],
+    "weekly": []
+  },
+  "performance": {
+    "avg_response_time_hours": 0,
+    "avg_resolution_time_days": 0,
+    "sla_compliance_percentage": 0
+  }
+}

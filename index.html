@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Public Voice Hub - מרכז הפרויקטים האזרחיים</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="web/assets/css/alternative-resources.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --accent-color: #e74c3c;
+            --success-color: #27ae60;
+            --warning-color: #f39c12;
+            --info-color: #17a2b8;
+            --light-color: #ecf0f1;
+            --dark-color: #2c3e50;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            margin: 0;
+            padding: 0;
+        }
+
+        .hero-section {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="white" opacity="0.1"/><circle cx="75" cy="75" r="1" fill="white" opacity="0.1"/><circle cx="50" cy="10" r="0.5" fill="white" opacity="0.1"/><circle cx="10" cy="60" r="0.5" fill="white" opacity="0.1"/><circle cx="90" cy="40" r="0.5" fill="white" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+            opacity: 0.3;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .main-logo {
+            font-size: 4rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .main-subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+
+        .main-description {
+            font-size: 1.1rem;
+            max-width: 800px;
+            margin: 0 auto 40px;
+            line-height: 1.6;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-main {
+            padding: 15px 30px;
+            font-size: 1.1rem;
+            border-radius: 50px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-primary-main {
+            background: var(--accent-color);
+            color: white;
+            box-shadow: 0 4px 15px rgba(231, 76, 60, 0.3);
+        }
+
+        .btn-primary-main:hover {
+            background: #c0392b;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(231, 76, 60, 0.4);
+            color: white;
+        }
+
+        .btn-secondary-main {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .btn-secondary-main:hover {
+            background: white;
+            color: var(--primary-color);
+            transform: translateY(-2px);
+        }
+
+        .projects-section {
+            padding: 80px 0;
+            background: white;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+
+        .section-title p {
+            font-size: 1.2rem;
+            color: #666;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .main-project-card {
+            background: linear-gradient(135deg, var(--accent-color) 0%, #c0392b 100%);
+            color: white;
+            border-radius: 20px;
+            padding: 40px;
+            text-align: center;
+            margin-bottom: 40px;
+            box-shadow: 0 10px 30px rgba(231, 76, 60, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .main-project-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0px) rotate(0deg);
+            }
+
+            50% {
+                transform: translateY(-20px) rotate(180deg);
+            }
+        }
+
+        .main-project-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .main-project-icon {
+            font-size: 4rem;
+            margin-bottom: 20px;
+        }
+
+        .main-project-title {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .main-project-description {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+
+        .subprojects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .subproject-card {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .subproject-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            border-color: var(--secondary-color);
+        }
+
+        .subproject-icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            color: var(--secondary-color);
+        }
+
+        .subproject-title {
+            font-size: 1.3rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: var(--primary-color);
+        }
+
+        .subproject-code {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 15px;
+            font-family: 'Courier New', monospace;
+            background: #f8f9fa;
+            padding: 5px 10px;
+            border-radius: 5px;
+            display: inline-block;
+        }
+
+        .subproject-description {
+            font-size: 0.95rem;
+            color: #666;
+            margin-bottom: 20px;
+            line-height: 1.5;
+        }
+
+        .subproject-link {
+            color: var(--secondary-color);
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+        .subproject-link:hover {
+            color: var(--primary-color);
+        }
+
+        .stats-section {
+            background: var(--light-color);
+            padding: 60px 0;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: bold;
+            color: var(--secondary-color);
+            margin-bottom: 10px;
+        }
+
+        .stat-label {
+            font-size: 1.1rem;
+            color: var(--primary-color);
+            font-weight: 500;
+        }
+
+        .footer {
+            background: var(--primary-color);
+            color: white;
+            padding: 40px 0;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .footer-title {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+        }
+
+        .footer-description {
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            margin-bottom: 30px;
+        }
+
+        .footer-link {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .footer-link:hover {
+            color: var(--secondary-color);
+        }
+
+        .footer-verse {
+            font-style: italic;
+            font-size: 1.1rem;
+            opacity: 0.8;
+            margin-top: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .main-logo {
+                font-size: 2.5rem;
+            }
+
+            .main-subtitle {
+                font-size: 1.2rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .subprojects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .main-project-title {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="main-logo">🌟 Public Voice Hub</h1>
+                <p class="main-subtitle">מרכז הפרויקטים האזרחיים</p>
+                <p class="main-description">
+                    מערך פרויקטים מלא לקידום שקיפות ציבורית, צדק חברתי ואחדות אזרחית.
+                    כל פרויקט מיועד לתחום ספציפי של פעילות אזרחית וחברתית.
+                </p>
+                <div class="cta-buttons">
+                    <a href="https://github.com/AnLoMinus/PublicVoiceHub" target="_blank"
+                        class="btn-main btn-primary-main">
+                        <i class="fab fa-github"></i> GitHub Repository
+                    </a>
+                    <a href="FixCry/" class="btn-main btn-secondary-main">
+                        <i class="fas fa-tools"></i> FixCry - המאגר הראשי
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Project Section -->
+    <section class="projects-section" id="projects">
+        <div class="container">
+            <div class="section-title">
+                <h2>🏆 הפרויקט הראשי</h2>
+                <p>FixCry הוא המאגר הראשי והמרכזי שלנו - פלטפורמה מקיפה לניהול תלונות אזרחים</p>
+            </div>
+
+            <div class="main-project-card">
+                <div class="main-project-content">
+                    <div class="main-project-icon">🛠️</div>
+                    <h3 class="main-project-title">FixCry - מזעקה למעשה</h3>
+                    <p class="main-project-description">
+                        פלטפורמה מקיפה לניהול תלונות אזרחים ותיקי בעיות ציבוריות.
+                        המאגר הראשי שלנו המאפשר לאזרחים לדווח על בעיות ולקבל מענה מהיר ויעיל.
+                    </p>
+                    <a href="https://github.com/AnLoMinus/PublicVoiceHub/tree/main/FixCry" target="_blank"
+                        class="btn-main btn-primary-main">
+                        <i class="fab fa-github"></i> FixCry ב-GitHub
+                    </a>
+                </div>
+            </div>
+
+            <div class="section-title">
+                <h2>📋 תתי פרויקטים</h2>
+                <p>15 פרויקטים נוספים המתמחים בתחומים ספציפיים של פעילות אזרחית וחברתית</p>
+            </div>
+
+            <div class="subprojects-grid">
+                <!-- Top 3 Projects -->
+                <div class="subproject-card">
+                    <div class="subproject-icon">🕊️</div>
+                    <h4 class="subproject-title">קול העם</h4>
+                    <div class="subproject-code">PV - People Voice</div>
+                    <p class="subproject-description">פלטפורמה דמוקרטית להבעת דעות ורצונות האזרחים</p>
+                    <a href="https://github.com/AnLoMinus/PublicVoiceHub/tree/main/PV" target="_blank"
+                        class="subproject-link">GitHub →</a>
+                </div>
+
+                <div class="subproject-card">
+                    <div class="subproject-icon">⚖️</div>
+                    <h4 class="subproject-title">קו צדק</h4>
+                    <div class="subproject-code">JL - Justice Line</div>
+                    <p class="subproject-description">פלטפורמה משפטית להנגשת צדק לכל אזרח</p>
+                    <a href="https://github.com/AnLoMinus/PublicVoiceHub/tree/main/JL" target="_blank"
+                        class="subproject-link">GitHub →</a>
+                </div>
+
+                <div class="subproject-card">
+                    <div class="subproject-icon">❤️</div>
+                    <h4 class="subproject-title">זעקת לב</h4>
+                    <div class="subproject-code">HC - Heart Cry</div>
+                    <p class="subproject-description">פלטפורמה רגשית לתמיכה נפשית וחברתית</p>
+                    <a href="https://github.com/AnLoMinus/PublicVoiceHub/tree/main/HC" target="_blank"
+                        class="subproject-link">GitHub →</a>
+                </div>
+
+                <!-- Additional Projects -->
+                <div class="subproject-card">
+                    <div class="subproject-icon">🔍</div>
+                    <h4 class="subproject-title">אמת חיה</h4>
+                    <div class="subproject-code">LT - Living Truth</div>
+                    <p class="subproject-description">פלטפורמה לעיתונות אזרחית ושקיפות מידע</p>
+                    <a href="https://github.com/AnLoMinus/PublicVoiceHub/tree/main/LT" target="_blank"
+                        class="subproject-link">GitHub →</a>
+                </div>
+
+                <div class="subproject-card">
+                    <div class="subproject-icon">📢</div>
+                    <h4 class="subproject-title">קריאת ציבור</h4>
+                    <div class="subproject-code">PC - Public Call</div>
+                    <p class="subproject-description">פלטפורמה לארגון מחאות ופעילות אזרחית</p>
+                    <a href="https://github.com/AnLoMinus/PublicVoiceHub/tree/main/PC" target="_blank"
+                        class="subproject-link">GitHub →</a>
+                </div>
+
+                <div class="subproject-card">
+                    <div class="subproject-icon">📢</div>
+                    <h4 class="subproject-title">הד קול</h4>
+                    <div class="subproject-code">EV - Echo Voice</div>
+                    <p class="subproject-description">פלטפורמה להפצת מסרים והגברת השפעה</p>
+                    <a href="https://github.com/AnLoMinus/PublicVoiceHub/tree/main/EV" target="_blank"
+                        class="subproject-link">GitHub →</a>
+                </div>
+
+                <div class="subproject-card">
+                    <div class="subproject-icon">🎯</div>
+                    <h4 class="subproject-title">אמת אחת</h4>
+                    <div class="subproject-code">OT - One Truth</div>
+                    <p class="subproject-description">פלטפורמה לאיחוד קולות ומסרים למטרה משותפת</p>
+                    <a href="https://github.com/AnLoMinus/PublicVoiceHub/tree/main/OT" target="_blank"
+                        class="subproject-link">GitHub →</a>
+                </div>
+
+                <div class="subproject-card">
+                    <div class="subproject-icon">🚀</div>
+                    <h4 class="subproject-title">קול ראשון</h4>
+                    <div class="subproject-code">FV - First Voice</div>
+                    <p class="subproject-description">פלטפורמה לקידום מנהיגות צעירה וחדשנות חברתית</p>
+                    <a href="https://github.com/AnLoMinus/PublicVoiceHub/tree/main/FV" target="_blank"
+                        class="subproject-link">GitHub →</a>
+                </div>
+
+                <div class="subproject-card">
+                    <div class="subproject-icon">🗽</div>
+                    <h4 class="subproject-title">אזרח חופשי</h4>
+                    <div class="subproject-code">FC - Free Citizen</div>
+                    <p class="subproject-description">פלטפורמה לקידום זכויות אזרח וחופש אישי</p>
+                    <a href="https://github.com/AnLoMinus/PublicVoiceHub/tree/main/FC" target="_blank"
+                        class="subproject-link">GitHub →</a>
+                </div>
+
+                <div class="subproject-card">
+                    <div class="subproject-icon">❤️</div>
+                    <h4 class="subproject-title">לב אחד</h4>
+                    <div class="subproject-code">OH - One Heart</div>
+                    <p class="subproject-description">פלטפורמה לאיחוד לבבות ולבניית קהילה חזקה</p>
+                    <a href="https://github.com/AnLoMinus/PublicVoiceHub/tree/main/OH" target="_blank"
+                        class="subproject-link">GitHub →</a>
+                </div>
+
+                <!-- Global Projects -->
+                <div class="subproject-card">
+                    <div class="subproject-icon">🕊️</div>
+                    <h4 class="subproject-title">קול העם החופשי</h4>
+                    <div class="subproject-code">FPV - Free People Voice</div>
+                    <p class="subproject-description">פלטפורמה דמוקרטית לחופש ביטוי מלא</p>
+                    <a href="https://github.com/AnLoMinus/PublicVoiceHub/tree/main/FPV" target="_blank"
+                        class="subproject-link">GitHub →</a>
+                </div>
+
+                <div class="subproject-card">
+                    <div class="subproject-icon">⚖️</div>
+                    <h4 class="subproject-title">צדק לכולם</h4>
+                    <div class="subproject-code">JFA - Justice For All</div>
+                    <p class="subproject-description">פלטפורמה גלובלית לקידום צדק חברתי</p>
+                    <a href="https://github.com/AnLoMinus/PublicVoiceHub/tree/main/JFA" target="_blank"
+                        class="subproject-link">GitHub →</a>
+                </div>
+
+                <div class="subproject-card">
+                    <div class="subproject-icon">🔍</div>
+                    <h4 class="subproject-title">אמת לעם</h4>
+                    <div class="subproject-code">TFP - Truth For People</div>
+                    <p class="subproject-description">פלטפורמה לחשיפת אמת ושקיפות מלאה</p>
+                    <a href="https://github.com/AnLoMinus/PublicVoiceHub/tree/main/TFP" target="_blank"
+                        class="subproject-link">GitHub →</a>
+                </div>
+
+                <div class="subproject-card">
+                    <div class="subproject-icon">🇮🇱</div>
+                    <h4 class="subproject-title">עם אחד לב אחד</h4>
+                    <div class="subproject-code">ONH - One Nation One Heart</div>
+                    <p class="subproject-description">פלטפורמה לאיחוד העם ולבניית אחדות לאומית</p>
+                    <a href="https://github.com/AnLoMinus/PublicVoiceHub/tree/main/ONH" target="_blank"
+                        class="subproject-link">GitHub →</a>
+                </div>
+
+                <div class="subproject-card">
+                    <div class="subproject-icon">📢</div>
+                    <h4 class="subproject-title">הד העם</h4>
+                    <div class="subproject-code">EOP - Echo of People</div>
+                    <p class="subproject-description">פלטפורמה להפצת קול העם והגברת השפעה ציבורית</p>
+                    <a href="https://github.com/AnLoMinus/PublicVoiceHub/tree/main/EOP" target="_blank"
+                        class="subproject-link">GitHub →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Alternative Resources Section -->
+    <section class="alternative-resources-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>🔗 מאגרים אלטרנטיביים וקודמים</h2>
+                <p>מאגרים נוספים ופלטפורמות קיימות לניהול תלונות ופניות ציבור</p>
+            </div>
+
+            <!-- Search and Filter Controls -->
+            <div class="search-controls">
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <div class="input-group">
+                            <span class="input-group-text"><i class="fas fa-search"></i></span>
+                            <input type="text" id="resource-search" class="form-control search-input"
+                                placeholder="חיפוש מאגרים...">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="filter-buttons">
+                            <button type="button" class="btn btn-outline-primary filter-btn resource-filter"
+                                data-status="active">פעילים</button>
+                            <button type="button" class="btn btn-outline-warning filter-btn resource-filter"
+                                data-status="planned">מתוכננים</button>
+                            <button type="button" class="btn btn-outline-secondary filter-btn resource-filter active"
+                                data-status="all">הכל</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Dynamic Resources Container -->
+            <div class="row" id="alternative-resources-container">
+                <!-- Resources will be loaded dynamically here -->
+                <div class="col-12">
+                    <div class="loading-spinner">
+                        <div class="spinner-border text-primary" role="status">
+                            <span class="visually-hidden">טוען מאגרים...</span>
+                        </div>
+                        <p>טוען מאגרים אלטרנטיביים...</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Integration Note -->
+            <div class="integration-note">
+                <h5><i class="fas fa-link"></i> אינטגרציה עם מאגרים קיימים</h5>
+                <p><strong>FixCry</strong> הוא המאגר הראשי שלנו, אך אנו ממליצים גם להשתמש במאגרים הרשמיים והחלופיים
+                    הקיימים. FixCry משתלב עם המאגרים הקיימים ומספק ערך מוסף:</p>
+
+                <div class="integration-benefits">
+                    <div class="integration-benefit">
+                        <i class="fas fa-eye"></i>
+                        <strong>שקיפות מלאה</strong>
+                    </div>
+                    <div class="integration-benefit">
+                        <i class="fas fa-chart-line"></i>
+                        <strong>מעקב מתקדם</strong>
+                    </div>
+                    <div class="integration-benefit">
+                        <i class="fas fa-chart-bar"></i>
+                        <strong>ניתוח נתונים</strong>
+                    </div>
+                    <div class="integration-benefit">
+                        <i class="fas fa-file-alt"></i>
+                        <strong>דוחות אוטומטיים</strong>
+                    </div>
+                    <div class="integration-benefit">
+                        <i class="fas fa-users"></i>
+                        <strong>קהילה פעילה</strong>
+                    </div>
+                    <div class="integration-benefit">
+                        <i class="fas fa-tools"></i>
+                        <strong>תמיכה טכנית</strong>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3 col-sm-6">
+                    <div class="stat-item">
+                        <div class="stat-number">16</div>
+                        <div class="stat-label">פרויקטים מלאים</div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    <div class="stat-item">
+                        <div class="stat-number">15</div>
+                        <div class="stat-label">תחומי פעילות</div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    <div class="stat-item">
+                        <div class="stat-number">100%</div>
+                        <div class="stat-label">תמיכה בעברית</div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    <div class="stat-item">
+                        <div class="stat-number">∞</div>
+                        <div class="stat-label">אפשרויות שינוי</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <h3 class="footer-title">🌟 Public Voice Hub</h3>
+                <p class="footer-description">
+                    מערך פרויקטים מלא לקידום שקיפות ציבורית, צדק חברתי ואחדות אזרחית.
+                    כל פרויקט הוא צעד נוסף לקראת חברה טובה יותר, צודקת יותר ואחדות יותר.
+                </p>
+                <div class="footer-links">
+                    <a href="https://github.com/AnLoMinus/PublicVoiceHub/tree/main/FixCry" target="_blank"
+                        class="footer-link">FixCry - המאגר הראשי</a>
+                    <a href="https://github.com/AnLoMinus/PublicVoiceHub/blob/main/README.md" target="_blank"
+                        class="footer-link">תיעוד מלא</a>
+                    <a href="https://github.com/AnLoMinus/PublicVoiceHub/blob/main/FINAL_SUMMARY.md" target="_blank"
+                        class="footer-link">סיכום הפרויקט</a>
+                </div>
+                <div class="footer-verse">
+                    "צֶדֶק צֶדֶק תִּרְדֹּף" — דברים ט״ז:כ׳
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="web/assets/js/alternative-resources.js"></script>
+    <script>
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all cards
+        document.querySelectorAll('.subproject-card').forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(20px)';
+            card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(card);
+        });
+    </script>
+</body>
+
+</html>

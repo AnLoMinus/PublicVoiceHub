@@ -1,0 +1,42 @@
+{
+  "name": "fixcry-tools",
+  "version": "1.0.0",
+  "description": "FixCry development tools and scripts",
+  "main": "index.js",
+  "scripts": {
+    "validate": "node scripts/validate-data.js",
+    "duplicate-check": "node scripts/duplicate-check.js",
+    "generate-report": "node scripts/generate-report.js",
+    "test": "echo \"No tests specified\" && exit 0",
+    "lint": "echo \"No linting specified\" && exit 0"
+  },
+  "keywords": [
+    "fixcry",
+    "tools",
+    "validation",
+    "reports",
+    "duplicates"
+  ],
+  "author": "FixCry Team",
+  "license": "MIT",
+  "dependencies": {
+    "ajv": "^8.12.0",
+    "ajv-formats": "^2.1.1",
+    "fuse.js": "^6.6.2"
+  },
+  "devDependencies": {
+    "eslint": "^8.0.0",
+    "prettier": "^2.8.0"
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/AnLoMinus/FixCry.git"
+  },
+  "bugs": {
+    "url": "https://github.com/AnLoMinus/FixCry/issues"
+  },
+  "homepage": "https://github.com/AnLoMinus/FixCry#readme"
+}

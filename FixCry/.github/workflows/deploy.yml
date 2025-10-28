@@ -1,0 +1,104 @@
+name: 🚀 Deploy Website
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: 📥 Checkout code
+        uses: actions/checkout@v4
+
+      - name: 🔧 Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'
+
+      - name: 📦 Install dependencies
+        run: npm ci
+
+      - name: 🧪 Run tests
+        run: npm test
+
+      - name: 🏗️ Build website
+        run: |
+          echo "Building website..."
+          # Create web directory structure
+          mkdir -p web/assets/css web/assets/js web/api
+          
+          # Copy HTML files
+          cp web/index.html web/
+          
+          # Build CSS
+          echo "Building CSS..."
+          # Add CSS build commands here
+          
+          # Build JavaScript
+          echo "Building JavaScript..."
+          # Add JS build commands here
+          
+          # Generate API endpoints
+          echo "Generating API endpoints..."
+          # Add API generation here
+          
+          echo "✅ Website built successfully"
+
+      - name: 📊 Generate analytics
+        run: |
+          echo "Generating analytics..."
+          # Generate analytics data
+          mkdir -p web/api
+          
+          # Generate issues summary
+          echo '{"total_issues": 0, "open_issues": 0, "resolved_issues": 0}' > web/api/issues-summary.json
+          
+          # Generate categories summary
+          echo '{"categories": {}}' > web/api/categories-summary.json
+          
+          echo "✅ Analytics generated"
+
+      - name: 🚀 Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./web
+          cname: fixcry.org
+
+      - name: 📧 Notify deployment
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const { data: issues } = await github.rest.issues.listForRepo({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              state: 'open'
+            });
+            
+            const { data: pulls } = await github.rest.pulls.list({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              state: 'open'
+            });
+            
+            const message = `🚀 **Website deployed successfully!**
+            
+            📊 **Statistics:**
+            - Open issues: ${issues.length}
+            - Open PRs: ${pulls.length}
+            - Last updated: ${new Date().toLocaleString('he-IL')}
+            
+            🌐 **Website:** https://anlominus.github.io/FixCry/`;
+            
+            // Create deployment notification
+            await github.rest.issues.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title: `🚀 Deployment ${new Date().toISOString().split('T')[0]}`,
+              body: message,
+              labels: ['deployment', 'automated']
+            });

@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FixCry - מאגר בעיות ותלונות הציבור</title>
+    <meta name="description" content="פלטפורמה ציבורית להפיכת תלונות אזרחים לפתרונות מעשיים">
+    <meta name="keywords" content="תלונות, בעיות, ציבור, אזרחים, רשויות, תיקון">
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="assets/css/style.css" rel="stylesheet">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="FixCry - מאגר בעיות ותלונות הציבור">
+    <meta property="og:description" content="פלטפורמה ציבורית להפיכת תלונות אזרחים לפתרונות מעשיים">
+    <meta property="og:image" content="assets/images/fixcry-logo.png">
+    <meta property="og:url" content="https://anlominus.github.io/FixCry/">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="assets/images/favicon.ico">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <i class="fas fa-tools me-2"></i>
+                <strong>FixCry</strong>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#home">בית</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#report">דיווח</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#issues">תיקים</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#stats">סטטיסטיקות</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">אודות</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://github.com/AnLoMinus/FixCry" target="_blank">
+                            <i class="fab fa-github"></i> GitHub
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-section">
+        <div class="container">
+            <div class="row align-items-center min-vh-100">
+                <div class="col-lg-6">
+                    <h1 class="display-4 fw-bold text-primary mb-4">
+                        <i class="fas fa-tools me-3"></i>
+                        FixCry
+                    </h1>
+                    <h2 class="h3 text-secondary mb-4">מזעקה למעשה</h2>
+                    <p class="lead mb-4">
+                        פלטפורמה ציבורית המאפשרת לכל אזרח לדווח על בעיות ולקבל מענה ממוסדות השלטון. 
+                        יחד נהפוך את הזעקות לפתרונות מעשיים!
+                    </p>
+                    <div class="d-flex gap-3">
+                        <a href="#report" class="btn btn-primary btn-lg">
+                            <i class="fas fa-plus me-2"></i>
+                            דווח על בעיה
+                        </a>
+                        <a href="#issues" class="btn btn-outline-primary btn-lg">
+                            <i class="fas fa-list me-2"></i>
+                            צפה בתיקים
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="hero-image">
+                        <i class="fas fa-balance-scale hero-icon"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Categories Section -->
+    <section id="categories" class="py-5 bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center mb-5">
+                    <h2 class="display-5 fw-bold">קטגוריות הבעיות</h2>
+                    <p class="lead">דווח על בעיות בכל תחומי החיים הציבוריים</p>
+                </div>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-3">
+                    <div class="card category-card h-100">
+                        <div class="card-body text-center">
+                            <i class="fas fa-car category-icon text-primary"></i>
+                            <h5 class="card-title">תחבורה</h5>
+                            <p class="card-text">בעיות בכבישים, תחבורה ציבורית ותשתיות</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="card category-card h-100">
+                        <div class="card-body text-center">
+                            <i class="fas fa-hospital category-icon text-success"></i>
+                            <h5 class="card-title">בריאות</h5>
+                            <p class="card-text">בעיות במערכת הרפואה הציבורית</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="card category-card h-100">
+                        <div class="card-body text-center">
+                            <i class="fas fa-graduation-cap category-icon text-info"></i>
+                            <h5 class="card-title">חינוך</h5>
+                            <p class="card-text">בעיות בבתי ספר ומוסדות לימוד</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="card category-card h-100">
+                        <div class="card-body text-center">
+                            <i class="fas fa-heart category-icon text-danger"></i>
+                            <h5 class="card-title">רווחה</h5>
+                            <p class="card-text">מצוקות חברתיות ושירותי רווחה</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="card category-card h-100">
+                        <div class="card-body text-center">
+                            <i class="fas fa-leaf category-icon text-success"></i>
+                            <h5 class="card-title">סביבה</h5>
+                            <p class="card-text">מפגעים סביבתיים וזיהום</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="card category-card h-100">
+                        <div class="card-body text-center">
+                            <i class="fas fa-shield-alt category-icon text-warning"></i>
+                            <h5 class="card-title">ביטחון</h5>
+                            <p class="card-text">נושאי ביטחון אישי וציבורי</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="card category-card h-100">
+                        <div class="card-body text-center">
+                            <i class="fas fa-home category-icon text-secondary"></i>
+                            <h5 class="card-title">דיור</h5>
+                            <p class="card-text">בעיות בדיור ציבורי ושכירויות</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="card category-card h-100">
+                        <div class="card-body text-center">
+                            <i class="fas fa-landmark category-icon text-dark"></i>
+                            <h5 class="card-title">ממשל</h5>
+                            <p class="card-text">התנהלות רשויות ושירותים ציבוריים</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Report Section -->
+    <section id="report" class="py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center mb-5">
+                    <h2 class="display-5 fw-bold">דווח על בעיה</h2>
+                    <p class="lead">השמיע את הקול שלך - כל דיווח חשוב!</p>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="card shadow">
+                        <div class="card-body p-5">
+                            <div class="text-center mb-4">
+                                <i class="fas fa-exclamation-triangle text-warning" style="font-size: 3rem;"></i>
+                            </div>
+                            <h3 class="text-center mb-4">איך לדווח על בעיה?</h3>
+                            <div class="row g-4">
+                                <div class="col-md-6">
+                                    <div class="d-flex align-items-start">
+                                        <div class="flex-shrink-0">
+                                            <div class="step-number">1</div>
+                                        </div>
+                                        <div class="flex-grow-1 ms-3">
+                                            <h5>לחץ על "דיווח חדש"</h5>
+                                            <p>עבור לעמוד הדיווחים ב-GitHub</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="d-flex align-items-start">
+                                        <div class="flex-shrink-0">
+                                            <div class="step-number">2</div>
+                                        </div>
+                                        <div class="flex-grow-1 ms-3">
+                                            <h5>מלא את הפרטים</h5>
+                                            <p>תאר את הבעיה בפירוט</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="d-flex align-items-start">
+                                        <div class="flex-shrink-0">
+                                            <div class="step-number">3</div>
+                                        </div>
+                                        <div class="flex-grow-1 ms-3">
+                                            <h5>צרף הוכחות</h5>
+                                            <p>תמונות, מסמכים או וידאו</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="d-flex align-items-start">
+                                        <div class="flex-shrink-0">
+                                            <div class="step-number">4</div>
+                                        </div>
+                                        <div class="flex-grow-1 ms-3">
+                                            <h5>שלח את הדיווח</h5>
+                                            <p>נטפל בבעיה ונעדכן אותך</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="text-center mt-4">
+                                <a href="https://github.com/AnLoMinus/FixCry/issues/new/choose" 
+                                   class="btn btn-primary btn-lg" target="_blank">
+                                    <i class="fas fa-plus me-2"></i>
+                                    דווח על בעיה חדשה
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Issues Section -->
+    <section id="issues" class="py-5 bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center mb-5">
+                    <h2 class="display-5 fw-bold">תיקים פתוחים</h2>
+                    <p class="lead">צפה בתיקים הפתוחים ועקוב אחר ההתקדמות</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <div id="issues-container">
+                        <div class="text-center">
+                            <div class="spinner-border text-primary" role="status">
+                                <span class="visually-hidden">טוען...</span>
+                            </div>
+                            <p class="mt-3">טוען תיקים...</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-4">
+                <div class="col-12 text-center">
+                    <a href="https://github.com/AnLoMinus/FixCry/issues" 
+                       class="btn btn-outline-primary btn-lg" target="_blank">
+                        <i class="fas fa-external-link-alt me-2"></i>
+                        צפה בכל התיקים ב-GitHub
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Statistics Section -->
+    <section id="stats" class="py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center mb-5">
+                    <h2 class="display-5 fw-bold">סטטיסטיקות</h2>
+                    <p class="lead">הצלחות והתקדמות הפרויקט</p>
+                </div>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-3 col-sm-6">
+                    <div class="card stat-card text-center">
+                        <div class="card-body">
+                            <i class="fas fa-exclamation-circle stat-icon text-primary"></i>
+                            <h3 class="stat-number" id="total-issues">0</h3>
+                            <p class="stat-label">תיקים סה"כ</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    <div class="card stat-card text-center">
+                        <div class="card-body">
+                            <i class="fas fa-clock stat-icon text-warning"></i>
+                            <h3 class="stat-number" id="open-issues">0</h3>
+                            <p class="stat-label">תיקים פתוחים</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    <div class="card stat-card text-center">
+                        <div class="card-body">
+                            <i class="fas fa-check-circle stat-icon text-success"></i>
+                            <h3 class="stat-number" id="resolved-issues">0</h3>
+                            <p class="stat-label">תיקים נפתרו</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    <div class="card stat-card text-center">
+                        <div class="card-body">
+                            <i class="fas fa-users stat-icon text-info"></i>
+                            <h3 class="stat-number" id="contributors">0</h3>
+                            <p class="stat-label">תורמים</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-5 bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center mb-5">
+                    <h2 class="display-5 fw-bold">אודות FixCry</h2>
+                    <p class="lead">החזון והמטרות שלנו</p>
+                </div>
+            </div>
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <h3>החזון שלנו</h3>
+                    <p class="lead">
+                        ליצור מערכת פתוחה, נגישה ויעילה לשקיפות ציבורית וחיזוק אמון בין האזרחים לבין מוסדות השלטון.
+                    </p>
+                    <h3>המטרות שלנו</h3>
+                    <ul class="list-unstyled">
+                        <li><i class="fas fa-check text-success me-2"></i>תיעוד מסודר לכל בעיה</li>
+                        <li><i class="fas fa-check text-success me-2"></i>הפקת דוחות תקופתיים</li>
+                        <li><i class="fas fa-check text-success me-2"></i>קישור בין תלונות דומות</li>
+                        <li><i class="fas fa-check text-success me-2"></i>יצירת ערוץ אמון פתוח</li>
+                        <li><i class="fas fa-check text-success me-2"></i>קידום שינוי מערכתי</li>
+                    </ul>
+                </div>
+                <div class="col-lg-6">
+                    <div class="about-image text-center">
+                        <i class="fas fa-balance-scale about-icon"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-light py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4">
+                    <h5><i class="fas fa-tools me-2"></i>FixCry</h5>
+                    <p>פלטפורמה ציבורית להפיכת תלונות אזרחים לפתרונות מעשיים.</p>
+                    <p class="mb-0">"מזעקה למעשה" 🕊️✨</p>
+                </div>
+                <div class="col-lg-4 mb-4">
+                    <h5>קישורים חשובים</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="https://github.com/AnLoMinus/FixCry" class="text-light">GitHub Repository</a></li>
+                        <li><a href="https://github.com/AnLoMinus/FixCry/issues" class="text-light">דיווח על בעיות</a></li>
+                        <li><a href="https://github.com/AnLoMinus/FixCry/discussions" class="text-light">דיונים</a></li>
+                        <li><a href="docs/privacy-policy.md" class="text-light">מדיניות פרטיות</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-4 mb-4">
+                    <h5>יצירת קשר</h5>
+                    <ul class="list-unstyled">
+                        <li><i class="fas fa-envelope me-2"></i>info@fixcry.org</li>
+                        <li><i class="fab fa-github me-2"></i>AnLoMinus</li>
+                        <li><i class="fas fa-globe me-2"></i>fixcry.org</li>
+                    </ul>
+                </div>
+            </div>
+            <hr class="my-4">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <p class="mb-0">&copy; 2025 FixCry. כל הזכויות שמורות.</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <p class="mb-0">
+                        <a href="LICENSE" class="text-light me-3">רישיון MIT</a>
+                        <a href="CODE_OF_CONDUCT.md" class="text-light">קוד התנהגות</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JS -->
+    <script src="assets/js/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,304 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "FixCry Report Schema",
+  "description": "Schema for validating FixCry report data",
+  "type": "object",
+  "required": [
+    "id",
+    "type",
+    "period",
+    "generated_at",
+    "summary"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^RPT-\\d{4}-\\d{2}-\\d{2}-(weekly|monthly|yearly)$",
+      "description": "Unique report identifier"
+    },
+    "type": {
+      "type": "string",
+      "enum": ["weekly", "monthly", "yearly", "ad-hoc"],
+      "description": "Type of report"
+    },
+    "period": {
+      "type": "object",
+      "required": ["start", "end"],
+      "properties": {
+        "start": {
+          "type": "string",
+          "format": "date"
+        },
+        "end": {
+          "type": "string",
+          "format": "date"
+        }
+      }
+    },
+    "generated_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When the report was generated"
+    },
+    "generated_by": {
+      "type": "string",
+      "maxLength": 100,
+      "description": "Who/what generated the report"
+    },
+    "summary": {
+      "type": "object",
+      "required": ["total_issues", "open_issues", "resolved_issues"],
+      "properties": {
+        "total_issues": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Total number of issues in period"
+        },
+        "open_issues": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Number of open issues"
+        },
+        "resolved_issues": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Number of resolved issues"
+        },
+        "new_issues": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Number of new issues in period"
+        },
+        "avg_resolution_time": {
+          "type": "number",
+          "minimum": 0,
+          "description": "Average resolution time in days"
+        },
+        "sla_compliance": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100,
+          "description": "SLA compliance percentage"
+        }
+      }
+    },
+    "categories": {
+      "type": "object",
+      "properties": {
+        "תחבורה": {
+          "type": "object",
+          "properties": {
+            "total": {"type": "integer"},
+            "open": {"type": "integer"},
+            "resolved": {"type": "integer"},
+            "avg_time": {"type": "number"}
+          }
+        },
+        "בריאות": {
+          "type": "object",
+          "properties": {
+            "total": {"type": "integer"},
+            "open": {"type": "integer"},
+            "resolved": {"type": "integer"},
+            "avg_time": {"type": "number"}
+          }
+        },
+        "חינוך": {
+          "type": "object",
+          "properties": {
+            "total": {"type": "integer"},
+            "open": {"type": "integer"},
+            "resolved": {"type": "integer"},
+            "avg_time": {"type": "number"}
+          }
+        },
+        "רווחה": {
+          "type": "object",
+          "properties": {
+            "total": {"type": "integer"},
+            "open": {"type": "integer"},
+            "resolved": {"type": "integer"},
+            "avg_time": {"type": "number"}
+          }
+        },
+        "סביבה": {
+          "type": "object",
+          "properties": {
+            "total": {"type": "integer"},
+            "open": {"type": "integer"},
+            "resolved": {"type": "integer"},
+            "avg_time": {"type": "number"}
+          }
+        },
+        "ביטחון": {
+          "type": "object",
+          "properties": {
+            "total": {"type": "integer"},
+            "open": {"type": "integer"},
+            "resolved": {"type": "integer"},
+            "avg_time": {"type": "number"}
+          }
+        },
+        "דיור": {
+          "type": "object",
+          "properties": {
+            "total": {"type": "integer"},
+            "open": {"type": "integer"},
+            "resolved": {"type": "integer"},
+            "avg_time": {"type": "number"}
+          }
+        },
+        "ממשל": {
+          "type": "object",
+          "properties": {
+            "total": {"type": "integer"},
+            "open": {"type": "integer"},
+            "resolved": {"type": "integer"},
+            "avg_time": {"type": "number"}
+          }
+        }
+      }
+    },
+    "locations": {
+      "type": "object",
+      "description": "Statistics by location",
+      "additionalProperties": {
+        "type": "object",
+        "properties": {
+          "total": {"type": "integer"},
+          "open": {"type": "integer"},
+          "resolved": {"type": "integer"},
+          "top_categories": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "category": {"type": "string"},
+                "count": {"type": "integer"}
+              }
+            }
+          }
+        }
+      }
+    },
+    "trends": {
+      "type": "object",
+      "properties": {
+        "daily": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "date": {"type": "string", "format": "date"},
+              "new_issues": {"type": "integer"},
+              "resolved_issues": {"type": "integer"},
+              "open_issues": {"type": "integer"}
+            }
+          }
+        },
+        "weekly": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "week": {"type": "string"},
+              "new_issues": {"type": "integer"},
+              "resolved_issues": {"type": "integer"},
+              "open_issues": {"type": "integer"}
+            }
+          }
+        }
+      }
+    },
+    "top_issues": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {"type": "string"},
+          "title": {"type": "string"},
+          "category": {"type": "string"},
+          "priority": {"type": "string"},
+          "status": {"type": "string"},
+          "created_at": {"type": "string", "format": "date-time"},
+          "comments_count": {"type": "integer"},
+          "labels": {
+            "type": "array",
+            "items": {"type": "string"}
+          }
+        }
+      }
+    },
+    "performance_metrics": {
+      "type": "object",
+      "properties": {
+        "response_time": {
+          "type": "object",
+          "properties": {
+            "avg_hours": {"type": "number"},
+            "median_hours": {"type": "number"},
+            "p95_hours": {"type": "number"}
+          }
+        },
+        "resolution_time": {
+          "type": "object",
+          "properties": {
+            "avg_days": {"type": "number"},
+            "median_days": {"type": "number"},
+            "p95_days": {"type": "number"}
+          }
+        },
+        "sla_metrics": {
+          "type": "object",
+          "properties": {
+            "first_response": {"type": "number"},
+            "resolution": {"type": "number"},
+            "overall": {"type": "number"}
+          }
+        }
+      }
+    },
+    "recommendations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": ["improvement", "alert", "action", "insight"]
+          },
+          "priority": {
+            "type": "string",
+            "enum": ["low", "medium", "high", "critical"]
+          },
+          "title": {"type": "string"},
+          "description": {"type": "string"},
+          "action": {"type": "string"},
+          "category": {"type": "string"}
+        }
+      }
+    },
+    "metadata": {
+      "type": "object",
+      "properties": {
+        "version": {
+          "type": "string",
+          "pattern": "^\\d+\\.\\d+\\.\\d+$"
+        },
+        "generator": {
+          "type": "string",
+          "enum": ["manual", "automated", "scheduled"]
+        },
+        "data_sources": {
+          "type": "array",
+          "items": {"type": "string"}
+        },
+        "filters": {
+          "type": "object",
+          "description": "Filters applied to generate this report"
+        }
+      }
+    }
+  },
+  "additionalProperties": false
+}

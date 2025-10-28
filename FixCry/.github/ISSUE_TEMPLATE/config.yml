@@ -1,0 +1,11 @@
+blank_issues_enabled: false
+contact_links:
+  - name: 💬 דיונים כלליים
+    url: https://github.com/AnLoMinus/FixCry/discussions
+    about: שאלות כלליות, הצעות לשיפור ודיונים על הפרויקט
+  - name: 📚 תיעוד ועזרה
+    url: https://github.com/AnLoMinus/FixCry/wiki
+    about: מדריכים, תיעוד טכני ועזרה למשתמשים
+  - name: 🔒 דיווח על בעיות אבטחה
+    url: https://github.com/AnLoMinus/FixCry/security/advisories/new
+    about: דיווח על בעיות אבטחה רגישות
